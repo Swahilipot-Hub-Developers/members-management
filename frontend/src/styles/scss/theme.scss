@@ -8,4 +8,7 @@ $theme-colors: (
   'light': #c0ccda,
   'dark': #000103,
 );
+
 @import '/node_modules/bootstrap/scss/bootstrap.scss';
+@import '/node_modules/bootstrap/scss/variables';
+@import '/node_modules/bootstrap/scss/bootstrap-utilities.scss'
