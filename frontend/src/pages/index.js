@@ -1,9 +1,11 @@
-export default function Home() {
+const Home = () => {
   return (
-    <div>
-      <main className="container mt-4">
-        <p className="text-left font-bold">This is the main page of the website</p>
-      </main>
-    </div>
+    <>
+      <div className="container mt-4">
+        <h1 className="text-center">Website is a work in progress!</h1>
+      </div>
+    </>
   )
 }
+
+export default Home;
