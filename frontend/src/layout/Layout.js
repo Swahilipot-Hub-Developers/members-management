@@ -1,5 +1,5 @@
 import NavBar from './NavBar'
-//import Footer from './Footer'
+import Footer from './Footer'
 //import MetaTags from './MetaTags'
 
 const Layout = ({ children }) => {
@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
       {/*<MetaTags />*/}
       <NavBar />
       <main className='container'>{children}</main>
-      {/*<Footer />*/}
+      <Footer />
     </>
   )
 }

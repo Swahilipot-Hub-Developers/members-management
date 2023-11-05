@@ -1,5 +1,3 @@
-/* @import 'bootstrap/dist/css/bootstrap.min.css'; */
-
-main {
-  min-height: 75vh;
+html,body{
+  font-family: Inter;
 }
