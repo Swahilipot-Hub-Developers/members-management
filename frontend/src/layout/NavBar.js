@@ -15,8 +15,9 @@ const NavBar = () => {
       <Navbar.Toggle aria-controls="navbarNav" />
       <Navbar.Collapse id="navbarNav" className="justify-content-end">
         <Nav className="ml-auto">
-          <Nav.Link href="/about">About</Nav.Link>
-          <Nav.Link href="/contact">Contact</Nav.Link>
+          <Nav.Link href="/analytics">Analytics</Nav.Link>
+          <Nav.Link href="/members">Members</Nav.Link>
+          <Nav.Link href="/communications">Communications</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
