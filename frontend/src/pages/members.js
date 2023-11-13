@@ -1,7 +1,7 @@
 const Members = () => {
     return (
         <>
-            <div className='container'>
+            <div>
                 <header>
                     <h2 className="display-4 text-center fw-bold mt-5">Members</h2>
                 </header>

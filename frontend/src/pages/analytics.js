@@ -3,7 +3,7 @@ import AnalyticCard from "../components/analyticcard";
 const Analytics = () => {
     return (
         <>
-            <div className='container mb-5'>
+            <div className='mb-5'>
                 <header>
                     <h2 className="display-4 text-center fw-bold mt-5 mb-5">Analytics</h2>
                 </header>

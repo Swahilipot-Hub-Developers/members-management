@@ -2,7 +2,7 @@ import { FaEnvelope, FaPhone } from "react-icons/fa6";
 
 const Communications = () => {
     return (
-        <div className='container'>
+        <div>
             <header>
                 <h2 className="display-4 text-center fw-bold mt-5">Communications</h2>
                 <p className="text-center fs-5">Send bulk messages to the members</p>
