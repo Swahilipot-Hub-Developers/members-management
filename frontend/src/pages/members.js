@@ -19,36 +19,6 @@ const Members = () => {
                         <li className="list-group-item">
                             Daniel Kimanzi
                         </li>
-                        <li className="list-group-item">
-                            Full Names Here
-                        </li>
-                        <li className="list-group-item">
-                            Full Names Here
-                        </li>
-                        <li className="list-group-item">
-                            Full Names Here
-                        </li>
-                        <li className="list-group-item">
-                            Full Names Here
-                        </li>
-                        <li className="list-group-item">
-                            Full Names Here
-                        </li>
-                        <li className="list-group-item">
-                            Full Names Here
-                        </li>
-                        <li className="list-group-item">
-                            Full Names Here
-                        </li>
-                        <li className="list-group-item">
-                            Full Names Here
-                        </li>
-                        <li className="list-group-item">
-                            Full Names Here
-                        </li>
-                        <li className="list-group-item">
-                            Full Names Here
-                        </li>
                     </ul>
                 </div>
             </div>
