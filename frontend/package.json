@@ -14,9 +14,10 @@
     "bootstrap-icons": "^1.11.1",
     "next": "13.5.6",
     "path": "^0.12.7",
-    "react": "18.2.0",
+    "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
     "react-dom": "18.2.0",
+    "react-icons": "^4.11.0",
     "sass": "^1.69.5"
   },
   "devDependencies": {

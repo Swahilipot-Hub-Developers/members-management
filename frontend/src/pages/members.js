@@ -1,7 +1,7 @@
 const Members = () => {
     return (
         <>
-            <div className='container'>
+            <div>
                 <header>
                     <h2 className="display-4 text-center fw-bold mt-5">Members</h2>
                 </header>
@@ -18,36 +18,6 @@ const Members = () => {
                         </li>
                         <li className="list-group-item">
                             Daniel Kimanzi
-                        </li>
-                        <li className="list-group-item">
-                            Full Names Here
-                        </li>
-                        <li className="list-group-item">
-                            Full Names Here
-                        </li>
-                        <li className="list-group-item">
-                            Full Names Here
-                        </li>
-                        <li className="list-group-item">
-                            Full Names Here
-                        </li>
-                        <li className="list-group-item">
-                            Full Names Here
-                        </li>
-                        <li className="list-group-item">
-                            Full Names Here
-                        </li>
-                        <li className="list-group-item">
-                            Full Names Here
-                        </li>
-                        <li className="list-group-item">
-                            Full Names Here
-                        </li>
-                        <li className="list-group-item">
-                            Full Names Here
-                        </li>
-                        <li className="list-group-item">
-                            Full Names Here
                         </li>
                     </ul>
                 </div>
