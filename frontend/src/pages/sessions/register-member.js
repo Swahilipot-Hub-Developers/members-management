@@ -4,8 +4,8 @@ import axios from 'axios';
 
 const MemberRegistration = () => {
     const [formData, setFormData] = useState({
-        name: '',
-        gender: '',
+        name: 'Chris',
+        gender: 'M',
         yearOfBirth: '',
         country: '',
         county: '',
@@ -30,7 +30,7 @@ const MemberRegistration = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://127.0.0.1/api/members/', formData);
+            const response = await axios.post('http://127.0.0.1/membersmgmt/members/', formData);
 
             if (response.status === 201) {
                 console.log('Member registered successfully');
