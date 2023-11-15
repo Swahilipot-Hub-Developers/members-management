@@ -55,6 +55,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "backend.urls"
 
+CORS_ALLOWED_ORIGINS = [
+    "https://localhost:3000"
+]
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
