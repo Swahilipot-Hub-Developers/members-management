@@ -4,9 +4,10 @@ import axios from 'axios';
 
 const MemberRegistration = () => {
     const [formData, setFormData] = useState({
-        name: 'Chris',
-        gender: 'M',
+        name: '',
+        gender: '',
         yearOfBirth: '',
+        emailAddress: '',
         country: '',
         county: '',
         subCounty: '',
@@ -30,7 +31,7 @@ const MemberRegistration = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://127.0.0.1/membersmgmt/members/', formData);
+            const response = await axios.post('http://127.0.0.1:8000/membersmgmt/members/', formData);
 
             if (response.status === 201) {
                 console.log('Member registered successfully');
@@ -57,35 +58,39 @@ const MemberRegistration = () => {
             <form className="container" style={{ width: '70%', margin: 'auto'}} onSubmit={handleSubmit}>
                 <h3 className="mt-4 fs-3 fw-bold text-center mb-2">Register an account (Member)</h3>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
-                    <input type="email" className="form-control" id="name" aria-describedby="emailHelp" value={formData.name} onChange={handleInputChange}/>
+                    <label htmlFor="name" className="form-label">Name</label>
+                    <input type="text" className="form-control" id="name" aria-describedby="emailHelp" value={formData.name} onChange={handleInputChange}/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Gender</label>
-                    <input type="email" className="form-control" id="Gender" aria-describedby="emailHelp" value={formData.gender} onChange={handleInputChange}/>
+                    <label htmlFor="Gender" className="form-label">Gender</label>
+                    <input type="text" className="form-control" id="Gender" aria-describedby="emailHelp" value={formData.gender} onChange={handleInputChange}/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Year of Birth</label>
-                    <input type="email" className="form-control" id="yearofbirth" aria-describedby="emailHelp" value={formData.yearOfBirth} onChange={handleInputChange}/>
+                    <label htmlFor="yearofbirth" className="form-label">Year of Birth</label>
+                    <input type="text" className="form-control" id="yearofbirth" aria-describedby="emailHelp" value={formData.yearOfBirth} onChange={handleInputChange}/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Country</label>
-                    <input type="email" className="form-control" id="country" aria-describedby="emailHelp" value={formData.country} onChange={handleInputChange}/>
+                    <label htmlFor="email" className="form-label">Email Address</label>
+                    <input type="email" className="form-control" id="email" aria-describedby="emailHelp" value={formData.emailAddress} onChange={handleInputChange}/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">County</label>
-                    <input type="email" className="form-control" id="county" aria-describedby="emailHelp" value={formData.county} onChange={handleInputChange}/>
+                    <label htmlFor="country" className="form-label">Country</label>
+                    <input type="text" className="form-control" id="country" aria-describedby="emailHelp" value={formData.country} onChange={handleInputChange}/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Sub-county</label>
-                    <input type="email" className="form-control" id="subcounty" aria-describedby="emailHelp" value={formData.subCounty} onChange={handleInputChange}/>
+                    <label htmlFor="county" className="form-label">County</label>
+                    <input type="text" className="form-control" id="county" aria-describedby="emailHelp" value={formData.county} onChange={handleInputChange}/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Phone Number</label>
-                    <input type="email" className="form-control" id="phonenumber" aria-describedby="emailHelp" value={formData.phoneNumber} onChange={handleInputChange}/>
+                    <label htmlFor="subcounty" className="form-label">Sub-county</label>
+                    <input type="text" className="form-control" id="subcounty" aria-describedby="emailHelp" value={formData.subCounty} onChange={handleInputChange}/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+                    <label htmlFor="phonenumber" className="form-label">Phone Number</label>
+                    <input type="text" className="form-control" id="phonenumber" aria-describedby="emailHelp" value={formData.phoneNumber} onChange={handleInputChange}/>
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="password" className="form-label">Password</label>
                     <input type="password" className="form-control" id="password" value={formData.password} onChange={handleInputChange}/>
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
