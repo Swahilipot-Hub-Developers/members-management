@@ -1,2 +1,8 @@
-# Swahilipot Members Management and Engagement
-This is the official documentation of the Swahilipot Members Management and Engagement System.
+# Swahilipot Members Management and Engagement System
+
+## Table of contents
+1. Introduction
+2. Installation 
+3. setup  
+
+### 1. Introduction
