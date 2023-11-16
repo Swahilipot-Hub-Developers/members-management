@@ -35,7 +35,6 @@ const MemberRegistration = () => {
 
             if (response.status === 201) {
                 console.log('Member registered successfully');
-                // You can redirect or perform any other action upon successful registration
             } else {
                 console.error('Error registering member');
             }
