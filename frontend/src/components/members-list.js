@@ -17,6 +17,23 @@ const MembersList = () => {
         fetchMembers();
     }, []);
 
+    const handleDelete = async (memberId) => {
+        try {
+            const response = await axios.delete(`http://127.0.0.1:8000/api/members/${memberId}`);
+
+            if (response.status === 204) {
+                setMembers((prevMembers) => prevMembers.filter((member) => member.id !== memberId));
+                
+                console.log(`Member with ID ${memberId} deleted successfully`);
+                window.location.reload();
+            } else {
+                console.error(`Error deleting member with ID ${memberId}`);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
     return (
         <div className="mt-4">
             <table className="table">
@@ -43,6 +60,22 @@ const MembersList = () => {
                             <td>{member.country}</td>
                             <td>{member.county}</td>
                             <td>{member.sub_county}</td>
+                            <td>
+                                <button
+                                    className="btn btn-sm btn-primary"
+                                    onClick={() => handleEdit(member.member_id)}
+                                >
+                                    Edit
+                                </button>
+                            </td>
+                            <td>
+                                <button
+                                    className="btn btn-sm btn-danger"
+                                    onClick={() => handleDelete(member.member_id)}
+                                >
+                                    Delete
+                                </button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>

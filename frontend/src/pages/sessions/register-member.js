@@ -12,7 +12,6 @@ const MemberRegistration = () => {
         county: '',
         sub_county: '',
         phone_number: '',
-        //password: ''
     });
 
     useEffect(() => {
@@ -41,6 +40,7 @@ const MemberRegistration = () => {
 
             if (response.status === 201) {
                 console.log('Member registered successfully');
+                window.location.reload();
             } else {
                 console.error('Error registering member');
             }
@@ -61,7 +61,7 @@ const MemberRegistration = () => {
                 />
             </header>
             <form className="container" style={{ width: '70%', margin: 'auto'}} onSubmit={handleSubmit}>
-                <h3 className="mt-4 fs-3 fw-bold text-center mb-2">Register an account (Member)</h3>
+                <h3 className="mt-4 fs-3 fw-bold text-center mb-2">Be a part of the community!</h3>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Name</label>
                     <input type="text" className="form-control" id="name" aria-describedby="emailHelp" value={formData.name} onChange={handleInputChange}/>
