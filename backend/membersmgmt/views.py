@@ -11,7 +11,8 @@ class MemberListAPIView(APIView):
         members = Member.objects.all()
         serializer = MemberSerializer(members, many=True)
         return Response(serializer.data)
-
+    
+    #Submitting the Members form to the database
     def post(self, request):
         data = request.data
 
@@ -23,7 +24,6 @@ class MemberListAPIView(APIView):
         county = data.get('county', '')
         sub_county = data.get('sub_county', '')
         phone_number = data.get('phone_number', '')
-        #password = data.get('password', '')
 
         member = Member.objects.create(
             name=name,
@@ -37,7 +37,6 @@ class MemberListAPIView(APIView):
         )
 
         return Response({'message': 'Data received successfully'}, status=status.HTTP_201_CREATED)
-
 
 class MemberDetailAPIView(APIView):
     def get(self, request, member_id):
