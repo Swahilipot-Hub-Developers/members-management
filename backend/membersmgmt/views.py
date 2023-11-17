@@ -13,11 +13,30 @@ class MemberListAPIView(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        serializer = MemberSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        data = request.data
+
+        name = data.get('name', '')
+        gender = data.get('gender', '')
+        year_of_birth = data.get('year_of_birth', '')
+        email_address = data.get('email_address', '')
+        country = data.get('country', '')
+        county = data.get('county', '')
+        sub_county = data.get('sub_county', '')
+        phone_number = data.get('phone_number', '')
+        #password = data.get('password', '')
+
+        member = Member.objects.create(
+            name=name,
+            gender=gender,
+            year_of_birth=year_of_birth,
+            email_address=email_address,
+            country=country,
+            county=county,
+            sub_county=sub_county,
+            phone_number=phone_number,
+        )
+
+        return Response({'message': 'Data received successfully'}, status=status.HTTP_201_CREATED)
 
 
 class MemberDetailAPIView(APIView):

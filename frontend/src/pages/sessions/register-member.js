@@ -6,13 +6,13 @@ const MemberRegistration = () => {
     const [formData, setFormData] = useState({
         name: '',
         gender: '',
-        year_of_Birth: '',
+        year_of_birth: '',
         email_address: '',
         country: '',
         county: '',
         sub_county: '',
         phone_number: '',
-        password: ''
+        //password: ''
     });
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const MemberRegistration = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/membersmgmt/members/', formData, {
+            const response = await axios.post('http://127.0.0.1:8000/api/members/', formData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -74,6 +74,7 @@ const MemberRegistration = () => {
                         value={formData.gender}
                         onChange={handleInputChange}
                     >
+                        <option value="choose">Specify</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Other">Other</option>
@@ -103,6 +104,7 @@ const MemberRegistration = () => {
                         value={formData.sub_county}
                         onChange={handleInputChange}
                     >
+                        <option value="choose">Specify sub-county</option>
                         <option value="Mvita">Mvita</option>
                         <option value="Jomvu">Jomvu</option>
                         <option value="Changamwe">Changamwe</option>
@@ -114,10 +116,6 @@ const MemberRegistration = () => {
                 <div className="mb-3">
                     <label htmlFor="phone_number" className="form-label">Phone Number</label>
                     <input type="text" className="form-control" id="phone_number" aria-describedby="emailHelp" value={formData.phone_number} onChange={handleInputChange}/>
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="password" className="form-label">Password</label>
-                    <input type="password" className="form-control" id="password" value={formData.password} onChange={handleInputChange}/>
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
