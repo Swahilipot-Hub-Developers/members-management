@@ -9,7 +9,7 @@
 purpose of the project
 importance of the project
 audience
-#### 2. Installation
-#### 3. set up
+#### 2. set up and Installation
+use code bocks to show the comands to use to set up the project.
 
 
