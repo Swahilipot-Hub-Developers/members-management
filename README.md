@@ -6,3 +6,10 @@
 3. setup  
 
 ### 1. Introduction
+purpose of the project
+importance of the project
+audience
+#### 2. Installation
+#### 3. set up
+
+
