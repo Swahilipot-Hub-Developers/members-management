@@ -16,24 +16,18 @@ class MemberListAPIView(APIView):
     def post(self, request):
         data = request.data
 
-        name = data.get('name', '')
-        gender = data.get('gender', '')
-        year_of_birth = data.get('year_of_birth', '')
-        email_address = data.get('email_address', '')
-        country = data.get('country', '')
-        county = data.get('county', '')
-        sub_county = data.get('sub_county', '')
-        phone_number = data.get('phone_number', '')
+        if not all(key in data for key in ['name', 'gender', 'year_of_birth', 'email_address', 'country', 'county', 'sub_county', 'phone_number']):
+            return Response({'error': 'Required fields are missing'}, status=status.HTTP_400_BAD_REQUEST)
 
         member = Member.objects.create(
-            name=name,
-            gender=gender,
-            year_of_birth=year_of_birth,
-            email_address=email_address,
-            country=country,
-            county=county,
-            sub_county=sub_county,
-            phone_number=phone_number,
+            name=data['name'],
+            gender=data['gender'],
+            year_of_birth=data['year_of_birth'],
+            email_address=data['email_address'],
+            country=data['country'],
+            county=data['county'],
+            sub_county=data['sub_county'],
+            phone_number=data['phone_number'],
         )
 
         return Response({'message': 'Data received successfully'}, status=status.HTTP_201_CREATED)
