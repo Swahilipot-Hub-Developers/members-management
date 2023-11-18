@@ -1,10 +1,10 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework import viewsets
+from rest_framework import generics
 
-from .models import Member, Admin
-from .serializers import MemberSerializer, AdminSerializer
+from .models import Member, AdminProfile
+from .serializers import MemberSerializer, AdminProfileSerializer
 
 class MemberListAPIView(APIView):
     def get(self, request):
@@ -16,6 +16,7 @@ class MemberListAPIView(APIView):
     def post(self, request):
         data = request.data
 
+        # Confirming all keys are filled before submission
         if not all(key in data for key in ['name', 'gender', 'year_of_birth', 'email_address', 'country', 'county', 'sub_county', 'phone_number']):
             return Response({'error': 'Required fields are missing'}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -51,6 +52,14 @@ class MemberDetailAPIView(APIView):
         member.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-class AdminViewSet(viewsets.ModelViewSet):
-    queryset = Admin.objects.all()
-    serializer_class = AdminSerializer
+class AdminProfileListCreateView(generics.ListCreateAPIView):
+    queryset = AdminProfile.objects.all()
+    serializer_class = AdminProfileSerializer
+
+    def perform_create(self, serializer):
+        user = self.request.user
+        serializer.save(user=user)
+
+    def get_queryset(self):
+        user = self.request.user
+        return AdminProfile.objects.filter(user=user)

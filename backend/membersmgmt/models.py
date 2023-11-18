@@ -1,10 +1,11 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 class Member(models.Model):
     GENDER_CHOICES = [
-        ('M', 'Male'),
-        ('F', 'Female'),
-        ('O', 'Other')
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Other', 'Other')
     ]
 
     SUB_COUNTY_CHOICES = [
@@ -38,12 +39,11 @@ class Member(models.Model):
 
         super().save(*args, **kwargs)
 
-class Admin(models.Model):
-    id = models.AutoField(primary_key=True)
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+# Admin (User) model
+class AdminProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     phone_number = models.CharField(max_length=15)
-    email_address = models.EmailField()
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return self.user.username
+

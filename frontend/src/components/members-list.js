@@ -64,7 +64,7 @@ const MembersList = () => {
                             <td>
                                 <button // raises pop-up for editing info. Collect info from database and alter
                                     className="btn btn-sm btn-primary"
-                                    onClick={() => handleEdit(member.member_id)}
+                                    //function to be implemented soon...
                                 >
                                     Edit
                                 </button>
