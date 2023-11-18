@@ -24,6 +24,6 @@ router.register(r'admins', AdminViewSet)
 
 urlpatterns = [
     path('members/', MemberListAPIView.as_view(), name='member-list'),
-    path('members/<int:member_id>/', MemberDetailAPIView.as_view(), name='member-detail'),
+    path('members/<str:member_id>/', MemberDetailAPIView.as_view(), name='member-detail'),
     path('api/', include(router.urls)),
 ]

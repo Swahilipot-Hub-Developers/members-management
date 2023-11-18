@@ -17,6 +17,7 @@ const MembersList = () => {
         fetchMembers();
     }, []);
 
+    // Delete function for individual member
     const handleDelete = async (memberId) => {
         try {
             const response = await axios.delete(`http://127.0.0.1:8000/api/members/${memberId}`);
@@ -61,7 +62,7 @@ const MembersList = () => {
                             <td>{member.county}</td>
                             <td>{member.sub_county}</td>
                             <td>
-                                <button
+                                <button // raises pop-up for editing info. Collect info from database and alter
                                     className="btn btn-sm btn-primary"
                                     onClick={() => handleEdit(member.member_id)}
                                 >

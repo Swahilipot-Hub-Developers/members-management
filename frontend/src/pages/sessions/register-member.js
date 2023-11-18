@@ -40,7 +40,7 @@ const MemberRegistration = () => {
 
             if (response.status === 201) {
                 console.log('Member registered successfully');
-                window.location.reload();
+                window.location.reload();   // replace with message page. this reloads the screen after form submission
             } else {
                 console.error('Error registering member');
             }
