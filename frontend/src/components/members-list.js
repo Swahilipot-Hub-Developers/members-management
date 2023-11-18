@@ -7,7 +7,7 @@ const MembersList = () => {
     useEffect(() => {
         const fetchMembers = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/membersmgmt/members/');
+                const response = await axios.get('http://127.0.0.1:8000/api/members/');
                 setMembers(response.data);
             } catch (error) {
                 console.error('Error fetching members:', error);
@@ -16,6 +16,24 @@ const MembersList = () => {
 
         fetchMembers();
     }, []);
+
+    // Delete function for individual member
+    const handleDelete = async (memberId) => {
+        try {
+            const response = await axios.delete(`http://127.0.0.1:8000/api/members/${memberId}`);
+
+            if (response.status === 204) {
+                setMembers((prevMembers) => prevMembers.filter((member) => member.id !== memberId));
+                
+                console.log(`Member with ID ${memberId} deleted successfully`);
+                window.location.reload();
+            } else {
+                console.error(`Error deleting member with ID ${memberId}`);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 
     return (
         <div className="mt-4">
@@ -43,6 +61,22 @@ const MembersList = () => {
                             <td>{member.country}</td>
                             <td>{member.county}</td>
                             <td>{member.sub_county}</td>
+                            <td>
+                                <button // raises pop-up for editing info. Collect info from database and alter
+                                    className="btn btn-sm btn-primary"
+                                    onClick={() => handleEdit(member.member_id)}
+                                >
+                                    Edit
+                                </button>
+                            </td>
+                            <td>
+                                <button
+                                    className="btn btn-sm btn-danger"
+                                    onClick={() => handleDelete(member.member_id)}
+                                >
+                                    Delete
+                                </button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
