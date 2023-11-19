@@ -3,8 +3,8 @@
 ## Table of contents
 1. Introduction
 2. Setup and installation
-    2.1. Setting up dependencies
-    2.2. Contribution
+    {2.1. Setting up dependencies
+    2.2. Contribution}
 3. Registering a member
 4. Viewing Member List
 
