@@ -7,7 +7,7 @@ const MembersList = () => {
     useEffect(() => {
         const fetchMembers = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/members/');
+                const response = await axios.get('https://codeschris.pythonanywhere.com/api/members/');
                 setMembers(response.data);
             } catch (error) {
                 console.error('Error fetching members:', error);
@@ -20,11 +20,11 @@ const MembersList = () => {
     // Delete function for individual member
     const handleDelete = async (memberId) => {
         try {
-            const response = await axios.delete(`http://127.0.0.1:8000/api/members/${memberId}`);
+            const response = await axios.delete(`https://codeschris.pythonanywhere.com/api/members/${memberId}`);
 
             if (response.status === 204) {
                 setMembers((prevMembers) => prevMembers.filter((member) => member.id !== memberId));
-                
+                //remove console.log to prevent XSS attacks
                 console.log(`Member with ID ${memberId} deleted successfully`);
                 window.location.reload();
             } else {
@@ -36,8 +36,8 @@ const MembersList = () => {
     };
 
     return (
-        <div className="mt-4">
-            <table className="table">
+        <div className="table-responsive mt-4">
+            <table className="table table-striped">
                 <thead>
                     <tr>
                         <th>Member ID</th>

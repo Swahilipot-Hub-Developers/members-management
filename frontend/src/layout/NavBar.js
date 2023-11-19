@@ -3,7 +3,7 @@ import { Navbar, Nav } from 'react-bootstrap';
 
 const NavBar = () => {
   return (
-    <Navbar bg="white" expand="lg" className="mx-5">
+    <Navbar bg="white" expand="lg" className="mx-4">
       <Navbar.Brand href="/">
         <img
           src="/assets/logo.png"

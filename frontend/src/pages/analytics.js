@@ -8,7 +8,7 @@ const Analytics = () => {
     useEffect(() => {
         const fetchTotalMembers = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:8000/api/members');
+            const response = await axios.get('https://codeschris.pythonanywhere.com/api/members/');
             const data = response.data;
             setTotalMembers(data.length); 
         } catch (error) {
