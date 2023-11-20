@@ -37,3 +37,17 @@ pip install r"requirements.txt"
 - Check from application
 ## 4. Viewing Member List
 - Check from application
+  
+## 1. Introduction
+**Purpose**
+This project aims to streamline and enhance the management processes for Swahilipot hub.
+**Importance**
+The system leverages modern technologies to provide efficient solutions for the management to collect data and regester members to the system.
+**Audience**
+The audience are the members getting regestered to SWahilipot hub. 
+## 2. set up and instolations
+## 2.2 contribution
+**Frontend:** NEXT.js React
+**Backend:** Django
+**Project Documentation**GitHub (README.md)
+**Version Control:** Git and GitHub
