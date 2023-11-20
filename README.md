@@ -47,23 +47,23 @@
 
 > ##### Instructions for Registration:
 >
->> - **Accessing the Form**:<br> Visit the SWAHILIPOT membership registration page.
+>> - **i.Accessing the Form**:<br> Visit the SWAHILIPOT membership registration page.
 >
->> - **Filling in the Form:**
+>> - **ii.Filling in the Form:**
 >
 > + Complete all required fields with accurate information.
 > + For Kenyan members, select the appropriate County and Sub County from the dropdown menus.
->> - **Submitting the Form:**
+>> - **iii.Submitting the Form:**
 >
 > + Verify the information entered.
 > + Complete the CAPTCHA verification.
 > + Click on ‘Submit’ to complete the registration process.
 > 
->> - **Confirmation:**
+>> - **iv.Confirmation:**
 > + Upon submission, a confirmation email will be sent to the provided email address.
 > + Note down the MEMBER ID for future reference.
 
-> 3. ### Member Communication
+> ### 3.Member Communication
 >
 >> Member Commuication is done via:
 >
@@ -88,14 +88,16 @@
 > ### 4.Dashboard for Analysis of Members.
 >
 ***Features of the Dashboard***
->> + **Membership Overview**
-<p>It provides a quick snapshot of the total number of members, new registrations, and other key metrics.</p>
->
->> + **Demographic Overvire
+> + **Membership Overview**
 <p>It provides a quick snapshot of the total number of members, new registrations, and other key metrics.</p>
 
-
-
+> + **Demographic_overview**
+<p>Analyzes membership data by gender, age, country, county, and sub-county.
+</p>
+   
+> + **Engagement Metrics**
+<p>Analyzes membership data by gender, age, country, county, and sub-county.
+</p>
 #### Setting up dependencies
 - Frontend
 Change directory to `frontend` by running the commands below:
@@ -110,18 +112,4 @@ cd backend
 pip install r"requirements.txt"
 ```
     
-
-
-
-**Purpose**This project aims to streamline and enhance the management processes for Swahilipot h
-The system leverages modern technologies to provide efficient solutions for the management to collect data and regester members to the system.
-**Audience**
-The audience are the members getting regestered to SWahilipot hub. 
-## 2. set up and instolations
-## 2.2 contribution
-**Frontend:** NEXT.js React
-**Backend:** Django
-**Project Documentation**GitHub (README.md)
-**Version Control:** Git and GitHub
-## 3.Registering a member
 
