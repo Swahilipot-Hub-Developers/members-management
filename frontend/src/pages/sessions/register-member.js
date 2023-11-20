@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import ReCAPTCHA from "react-google-recaptcha";
 
 const MemberRegistration = () => {
     const [formData, setFormData] = useState({
@@ -117,6 +118,10 @@ const MemberRegistration = () => {
                     <label htmlFor="phone_number" className="form-label">Phone Number</label>
                     <input type="text" className="form-control" id="phone_number" aria-describedby="emailHelp" value={formData.phone_number} onChange={handleInputChange}/>
                 </div>
+                <ReCAPTCHA
+                    sitekey={process.env.SITE_KEY}
+                    onChange={(value) => console.log("reCAPTCHA value:", value)}
+                />
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>
