@@ -123,5 +123,5 @@ The audience are the members getting regestered to SWahilipot hub.
 **Backend:** Django
 **Project Documentation**GitHub (README.md)
 **Version Control:** Git and GitHub
-## 3.Regestering a member
+## 3.Registering a member
 
