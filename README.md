@@ -85,6 +85,15 @@
 > + Use the integrated API (Africa's Talking Sandbox or Twilio) to send SMS messages.
 > + Select members, draft the message, and click ‘Send’ to deliver SMS notifications.
 
+> ### 4.Dashboard for Analysis of Members.
+>
+***Features of the Dashboard***
+>> + **Membership Overview**
+<p>It provides a quick snapshot of the total number of members, new registrations, and other key metrics.</p>
+>
+>> + **Demographic Overvire
+<p>It provides a quick snapshot of the total number of members, new registrations, and other key metrics.</p>
+
 
 
 #### Setting up dependencies
@@ -101,12 +110,6 @@ cd backend
 pip install r"requirements.txt"
 ```
     
-## 3. Register a member
-- Check from application
-## 4. Viewing Member List
-- Check from application
->  
-## 1. Introduction
 
 
 
