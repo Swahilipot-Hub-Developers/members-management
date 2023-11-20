@@ -7,18 +7,86 @@
     2.2. Contribution
 3. Registering a member
 4. Viewing Member List
+5. conclusion
+   
+> #### 1. Introduction
+>
+>> The platform is tailored specifically for organizations operating within or related to the Swahili-speaking regions.<br> It streamlines the process of member registration and enables effective communication and analysis of membership data.
 
-## 1. Introduction
-The purpose for this system,
-Importance (maybe),
-Audience
+> ### 2.Member Registration
 
-## 2. Setup and installation
-Use code blocks to show the commands to use to setup the project. For example,
-Clone the project using HTTPS:
-```bash
-git clone <https://github-project-link>
-```
+>> Members registration is done via an online registration form which has the following features:
+> + **Data Collection**
+>In Data Collecction, the Form is designed to capture essential member details such as:
+> 
+> - Member ID.
+> - Name.
+> - Gender.
+> - Year of Birth.
+> - Phone Number.
+> - Email address
+> - Country
+> - County
+> - Sub-County
+
+> + **Validation Rule**
+> 
+>>The validation rule ensures data intergrity by checking the validity of the inputs.
+
+>  + **Responsive Design**
+>
+>>  A mobile-friendly form that can easily accessed on various devices.
+
+> + **Submission Confirmation**
+>
+>> An automatic email is send to confirm successful registration.
+
+> + **Security**
+>
+>> CAPTCHA is used to prevent bot registrations.
+
+> ##### Instructions for Registration:
+>
+>> - **Accessing the Form**:<br> Visit the SWAHILIPOT membership registration page.
+>
+>> - **Filling in the Form:**
+>
+> + Complete all required fields with accurate information.
+> + For Kenyan members, select the appropriate County and Sub County from the dropdown menus.
+>> - **Submitting the Form:**
+>
+> + Verify the information entered.
+> + Complete the CAPTCHA verification.
+> + Click on ‘Submit’ to complete the registration process.
+> 
+>> - **Confirmation:**
+> + Upon submission, a confirmation email will be sent to the provided email address.
+> + Note down the MEMBER ID for future reference.
+
+> 3. ### Member Communication
+>
+>> Member Commuication is done via:
+>
+> + ***Email updates***:Individual and Bulk emails are able be sent to members on updates, newsletter and events.
+>   
+> + ***SMS Notifications***: SmS alert are sent to mmembers on successful registration and also updates.
+
+> ##### Instructions for Registration:
+>
+>> - **Email Members:**
+>
+> + Navigate to the ‘Communications’ tab in the admin dashboard.
+> + Choose to create a new email campaign.
+> + Select recipients, compose the message, and send it immediately or schedule it for later.
+>
+>> - **Send SMS**
+>
+> + In the same ‘Communications’ section, switch to the SMS panel.
+> + Use the integrated API (Africa's Talking Sandbox or Twilio) to send SMS messages.
+> + Select members, draft the message, and click ‘Send’ to deliver SMS notifications.
+
+
+
 #### Setting up dependencies
 - Frontend
 Change directory to `frontend` by running the commands below:
@@ -37,11 +105,12 @@ pip install r"requirements.txt"
 - Check from application
 ## 4. Viewing Member List
 - Check from application
-  
+>  
 ## 1. Introduction
-**Purpose**
-This project aims to streamline and enhance the management processes for Swahilipot hub.
-**Importance**
+
+
+
+**Purpose**This project aims to streamline and enhance the management processes for Swahilipot h
 The system leverages modern technologies to provide efficient solutions for the management to collect data and regester members to the system.
 **Audience**
 The audience are the members getting regestered to SWahilipot hub. 
@@ -51,3 +120,5 @@ The audience are the members getting regestered to SWahilipot hub.
 **Backend:** Django
 **Project Documentation**GitHub (README.md)
 **Version Control:** Git and GitHub
+## 3.Regestering a member
+
