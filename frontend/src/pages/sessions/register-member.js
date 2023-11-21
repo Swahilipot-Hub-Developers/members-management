@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import ReCAPTCHA from "react-google-recaptcha";
+//import ReCAPTCHA from "react-google-recaptcha";
 
 const MemberRegistration = () => {
     const [formData, setFormData] = useState({
@@ -15,11 +15,11 @@ const MemberRegistration = () => {
         phone_number: '',
     });
 
-    const [recaptchaValue, setRecaptchaValue] = useState(null);
+    /*const [recaptchaValue, setRecaptchaValue] = useState(null);
 
     const handleRecaptchaChange = (value) => {
         setRecaptchaValue(value);
-    }
+    }*/
 
     const handleInputChange = (e) => {
         const { id, value } = e.target;
@@ -40,7 +40,7 @@ const MemberRegistration = () => {
         }
       
         // Include the reCAPTCHA value in your form data
-        const formDataWithRecaptcha = { ...formData, recaptchaValue };
+        //const formDataWithRecaptcha = { ...formData, recaptchaValue };
 
         try {
             const response = await axios.post('https://codeschris.pythonanywhere.com/api/members/', formData, {
@@ -128,11 +128,11 @@ const MemberRegistration = () => {
                     <label htmlFor="phone_number" className="form-label">Phone Number</label>
                     <input type="text" className="form-control" id="phone_number" aria-describedby="emailHelp" value={formData.phone_number} onChange={handleInputChange}/>
                 </div>
-                <ReCAPTCHA
+                {/*<ReCAPTCHA
                     sitekey={process.env.SITE_KEY}
                     onChange={handleRecaptchaChange}
                     className="mb-3"
-                />
+                />*/}
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>
