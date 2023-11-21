@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     "membersmgmt",
     "rest_framework",
     "corsheaders",
-    "captcha"
 ]
 
 MIDDLEWARE = [
