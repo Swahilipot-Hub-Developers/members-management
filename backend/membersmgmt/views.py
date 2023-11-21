@@ -2,6 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import generics
+from captcha.decorators import validate_recaptcha
 
 from .models import Member, AdminProfile
 from .serializers import MemberSerializer, AdminProfileSerializer
@@ -19,6 +20,8 @@ class MemberListAPIView(APIView):
         # Confirming all keys are filled before submission
         if not all(key in data for key in ['name', 'gender', 'year_of_birth', 'email_address', 'country', 'county', 'sub_county', 'phone_number']):
             return Response({'error': 'Required fields are missing'}, status=status.HTTP_400_BAD_REQUEST)
+
+        recaptcha_value = request.recaptcha_response
 
         member = Member.objects.create(
             name=data['name'],
