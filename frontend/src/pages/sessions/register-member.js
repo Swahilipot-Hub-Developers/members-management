@@ -15,9 +15,11 @@ const MemberRegistration = () => {
         phone_number: '',
     });
 
-    useEffect(() => {
-        console.log("Form updated successfully", formData);
-    }, [formData]);
+    const [recaptchaValue, setRecaptchaValue] = useState(null);
+
+    const handleRecaptchaChange = (value) => {
+        setRecaptchaValue(value);
+    }
 
     const handleInputChange = (e) => {
         const { id, value } = e.target;
@@ -31,6 +33,14 @@ const MemberRegistration = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!recaptchaValue) {
+            console.error('reCAPTCHA validation failed');
+            return;
+        }
+      
+        // Include the reCAPTCHA value in your form data
+        const formDataWithRecaptcha = { ...formData, recaptchaValue };
 
         try {
             const response = await axios.post('https://codeschris.pythonanywhere.com/api/members/', formData, {
@@ -120,7 +130,8 @@ const MemberRegistration = () => {
                 </div>
                 <ReCAPTCHA
                     sitekey={process.env.SITE_KEY}
-                    onChange={(value) => console.log("reCAPTCHA value:", value)}
+                    onChange={handleRecaptchaChange}
+                    className="mb-3"
                 />
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
