@@ -1,8 +1,22 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import EditSection from './edit-section';
+import Modal from 'react-modal';
 
 const MembersList = () => {
     const [members, setMembers] = useState([]);
+    const [editModalVisible, setEditModalVisible] = useState(false);
+    const [editingMember, setEditingMember] = useState(null);
+
+    const handleEdit = (member) => {
+        setEditingMember(member);
+        setEditModalVisible(true);
+    };
+
+    const closeEditModal = () => {
+        setEditModalVisible(false);
+        setEditingMember(null);
+    };
 
     useEffect(() => {
         const fetchMembers = async () => {
@@ -29,6 +43,25 @@ const MembersList = () => {
                 window.location.reload();
             } else {
                 console.error(`Error deleting member with ID ${memberId}`);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    const handleEditSubmit = async (editedData) => {
+        try {
+            const response = await axios.put(`https://codeschris.pythonanywhere.com/api/members/${editedData.member_id}`, editedData);
+    
+            if (response.status === 200) {
+                setMembers((prevMembers) =>
+                    prevMembers.map((member) =>
+                        member.id === editedData.member_id ? editedData : member
+                    )
+                );
+                setEditModalVisible(false);
+            } else {
+                console.error(`Error updating member with ID ${editedData.member_id}`);
             }
         } catch (error) {
             console.error('Error:', error);
@@ -62,9 +95,9 @@ const MembersList = () => {
                             <td>{member.county}</td>
                             <td>{member.sub_county}</td>
                             <td>
-                                <button // raises pop-up for editing info. Collect info from database and alter
+                                <button
                                     className="btn btn-sm btn-primary"
-                                    //function to be implemented soon...
+                                    onClick={() => handleEdit(member)}
                                 >
                                     Edit
                                 </button>
@@ -81,6 +114,19 @@ const MembersList = () => {
                     ))}
                 </tbody>
             </table>
+            <Modal
+                isOpen={editModalVisible}
+                onRequestClose={closeEditModal}
+                contentLabel="Edit Member Modal"
+            >
+                <EditSection
+                    editingMember={editingMember}
+                    onSubmit={handleEditSubmit}
+                    isOpen={editModalVisible}
+                    onRequestClose={closeEditModal}
+                />
+            </Modal>
+
         </div>
     );
 }
