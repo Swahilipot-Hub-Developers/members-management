@@ -14,6 +14,7 @@ class MemberListAPIView(APIView):
         return Response(serializer.data)
     
     #Submitting the Members form to the database
+    @validate_recaptcha
     def post(self, request):
         data = request.data
 
