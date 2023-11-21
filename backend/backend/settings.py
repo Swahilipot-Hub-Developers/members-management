@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "membersmgmt",
     "rest_framework",
-    "corsheaders"
+    "corsheaders",
     "captcha"
 ]
 
