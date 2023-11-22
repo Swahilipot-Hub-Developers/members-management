@@ -88,14 +88,21 @@ class ExportCSVView(View):
 
         return response
 
-@method_decorator(csrf_exempt, name='dispatch')
+#@method_decorator(csrf_exempt, name='dispatch')
 class SendEmailToMembersView(View):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
     def post(self, request, *args, **kwargs):
         try:
             member_emails = Member.objects.values_list('email_address', flat=True)
 
             subject = request.POST.get('subject', '')
             message = request.POST.get('message', '')
+
+            if not subject or not message:
+                raise ValueError('Subject and message cannot be empty')
 
             for email in member_emails:
                 send_mail(subject, message, 'ciscoplayroom@gmail.com', [email], fail_silently=False)
