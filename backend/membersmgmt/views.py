@@ -1,10 +1,15 @@
+import csv
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import generics
-import csv
+
 from django.http import HttpResponse
 from django.views import View
+from django.core.mail import send_mail
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 
 from .models import Member, AdminProfile
 from .serializers import MemberSerializer, AdminProfileSerializer
@@ -82,3 +87,19 @@ class ExportCSVView(View):
                              row.country, row.county, row.sub_county]) 
 
         return response
+
+@csrf_exempt
+@require_POST
+def send_email_to_members(request):
+    try:
+        member_emails = Member.objects.values_list('email_address', flat=True)
+
+        subject = request.POST.get('subject', '')
+        message = request.POST.get('message', '')
+
+        for email in member_emails:
+            send_mail(subject, message, 'ciscoplayroom@gmail.com', [email], fail_silently=False)
+
+        return JsonResponse({'success': True, 'message': 'Emails sent successfully to members'})
+    except Exception as e:
+        return JsonResponse({'success': False, 'message': str(e)})
