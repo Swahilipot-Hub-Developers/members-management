@@ -14,15 +14,15 @@ const EmailModal = ({ isOpen, onRequestClose }) => {
                 subject: subject,
                 message: message,
             });
-
+    
             const data = response.data;
-
+    
             if (data.success) {
                 console.log('Emails sent successfully to members');
             } else {
                 console.error('Failed to send emails:', data.message);
             }
-
+    
             setSelectedRecipient('');
             setSubject('');
             setMessage('');
@@ -54,6 +54,7 @@ const EmailModal = ({ isOpen, onRequestClose }) => {
       onRequestClose={onRequestClose}
       contentLabel="Email Modal"
       style={customStyles}
+      ariaHideApp={false}
     >
       <h2>Send a bulk email to the members</h2>
       <form>

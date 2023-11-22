@@ -74,7 +74,7 @@ const Communications = () => {
             <EmailModal
                 isOpen={isModalOpen}
                 onRequestClose={() => setIsModalOpen(false)}
-                onSend={handleSendEmail}
+                onSend={handleSendEmail}  // Ensure that this prop is correctly passed
                 memberEmails={memberEmails}
             />
         </div>
