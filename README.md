@@ -92,5 +92,6 @@ pip install -r "requirements.txt"
 ```
 With the required dependencies installed, you can now contribute to the project with less flaws concerning dependencies missing. _Happy coding!_
 ## Features
+1. Registering as a member
 
 ## Conclusion
