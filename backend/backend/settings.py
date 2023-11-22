@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['codeschris.pythonanywhere.com']
 
@@ -140,8 +140,8 @@ AUTHENTICATION_BACKENDS = [
 # Email Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587 
+EMAIL_PORT = 465 #465 == SSL, 587 == TLS
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True 
 EMAIL_HOST_USER = 'ciscoplayroom@gmail.com'
-EMAIL_HOST_PASSWORD = 'juicebox42'
+EMAIL_HOST_PASSWORD = 'dxkypnlfsocqidbu'    #Generate App key for use in gmail:: To be changed for security
