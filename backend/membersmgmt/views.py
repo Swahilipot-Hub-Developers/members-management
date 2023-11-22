@@ -2,6 +2,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import generics
+import csv
+from django.http import HttpResponse
+from django.views import View
 
 from .models import Member, AdminProfile
 from .serializers import MemberSerializer, AdminProfileSerializer
@@ -63,3 +66,20 @@ class AdminProfileListCreateView(generics.ListCreateAPIView):
     def get_queryset(self):
         user = self.request.user
         return AdminProfile.objects.filter(user=user)
+    
+class ExportCSVView(View):
+    def get(self, request, *args, **kwargs):
+        data = Member.objects.all() 
+
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="members_data.csv"'
+
+        writer = csv.writer(response)
+        # Write header row if needed
+        # writer.writerow(['Column1', 'Column2', ...])
+
+        for row in data:
+            writer.writerow([row.member_id, row.name, row.gender, row.year_of_birth, row.phone_number, row.email_address,
+                             row.country, row.county, row.sub_county]) 
+
+        return response
