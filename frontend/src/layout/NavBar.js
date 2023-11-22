@@ -2,9 +2,22 @@ import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 
 const NavBar = () => {
-  const handleExport = () => {
-    window.location.href = 'https://codeschris.pythonanywhere.com/export-csv/';
+  const handleExport = async () => {
+    try {
+      const response = await axios.get('https://codeschris.pythonanywhere.com/api/export-csv/', { responseType: 'blob' });
+
+      const blob = new Blob([response.data], { type: 'text/csv' });
+
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = 'members_data.csv';
+      link.click();
+
+    } catch (error) {
+      console.error('Error exporting data:', error);
+    }
   };
+
   return (
     <Navbar bg="white" expand="lg" className="mx-4">
       <Navbar.Brand href="/">

@@ -75,8 +75,7 @@ class ExportCSVView(View):
         response['Content-Disposition'] = 'attachment; filename="members_data.csv"'
 
         writer = csv.writer(response)
-        # Write header row if needed
-        # writer.writerow(['Column1', 'Column2', ...])
+        writer.writerow(['Member ID', 'Name', 'Gender', 'Year of Birth', 'Phone Number', 'Email Address', 'Country', 'County', 'Sub County'])
 
         for row in data:
             writer.writerow([row.member_id, row.name, row.gender, row.year_of_birth, row.phone_number, row.email_address,
