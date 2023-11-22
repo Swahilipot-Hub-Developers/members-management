@@ -38,6 +38,7 @@ const EditSection = ({ editingMember, onSubmit, isOpen, onRequestClose }) => {
             onRequestClose={onRequestClose}
             contentLabel="Edit Member Modal"
             style={modalStyle}
+            ariaHideApp={false}
         >
         <div>
             <h3 className="display-6 fs-2 fw-bold">Edit details for {formData.name}</h3>
