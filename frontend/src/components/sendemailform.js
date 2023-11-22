@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 
-const EmailModal = ({ isOpen, onRequestClose, onSend, memberEmails  }) => {
+const EmailModal = ({ isOpen, onRequestClose }) => {
     const [selectedRecipient, setSelectedRecipient] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
@@ -11,8 +11,8 @@ const EmailModal = ({ isOpen, onRequestClose, onSend, memberEmails  }) => {
         try {
             const response = await axios.post('https://codeschris.pythonanywhere.com/api/send-email-to-members/', {
                 recipient: selectedRecipient,
-                subject,
-                message,
+                subject: subject,
+                message: message,
             });
 
             const data = response.data;
