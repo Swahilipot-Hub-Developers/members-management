@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import MemberListAPIView, MemberDetailAPIView, ExportCSVView
+from .views import MemberListAPIView, MemberDetailAPIView, ExportCSVView, SendEmailToMembersView
 
 urlpatterns = [
     path('members/', MemberListAPIView.as_view(), name='member-list'),
