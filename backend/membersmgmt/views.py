@@ -88,18 +88,18 @@ class ExportCSVView(View):
 
         return response
 
-@csrf_exempt
-@require_POST
-def send_email_to_members(request):
-    try:
-        member_emails = Member.objects.values_list('email_address', flat=True)
+@method_decorator(csrf_exempt, name='dispatch')
+class SendEmailToMembersView(View):
+    def post(self, request, *args, **kwargs):
+        try:
+            member_emails = Member.objects.values_list('email_address', flat=True)
 
-        subject = request.POST.get('subject', '')
-        message = request.POST.get('message', '')
+            subject = request.POST.get('subject', '')
+            message = request.POST.get('message', '')
 
-        for email in member_emails:
-            send_mail(subject, message, 'ciscoplayroom@gmail.com', [email], fail_silently=False)
+            for email in member_emails:
+                send_mail(subject, message, 'ciscoplayroom@gmail.com', [email], fail_silently=False)
 
-        return JsonResponse({'success': True, 'message': 'Emails sent successfully to members'})
-    except Exception as e:
-        return JsonResponse({'success': False, 'message': str(e)})
+            return JsonResponse({'success': True, 'message': 'Emails sent successfully to members'})
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': str(e)})
