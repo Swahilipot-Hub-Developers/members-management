@@ -7,15 +7,36 @@ class MemberSerializer(serializers.ModelSerializer):
         model = Member
         fields = '__all__'
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password', 'first_name', 'last_name']
+        extra_kwargs = {'password': {'write_only': True}}
+
 class AdminProfileSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+
+    phone_number = serializers.CharField()
+
     class Meta:
         model = AdminProfile
-        fields = ('user', 'phone_number')
+        fields = ['user', 'phone_number']
+
+    def create(self, validated_data):
+        print(validated_data)  # Print the received data
+        user_data = validated_data.pop('user')
+        password = user_data.pop('password')
+        
+        # Create the user instance
+        user = User.objects.create_user(password=password, **user_data)
+
+        # Create the AdminProfile instance
+        admin_profile = AdminProfile.objects.create(user=user, phone_number=validated_data['phone_number'])
+
+        return admin_profile
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
-        representation['username'] = instance.user.username
-        representation['email'] = instance.user.email
-        representation['first_name'] = instance.user.first_name
-        representation['last_name'] = instance.user.last_name
+        user_data = representation.pop('user')
+        representation.update(user_data)
         return representation

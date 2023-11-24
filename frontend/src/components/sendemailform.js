@@ -10,19 +10,19 @@ const EmailModal = ({ isOpen, onRequestClose }) => {
     const handleSend = async () => {
         try {
             const response = await axios.post('https://codeschris.pythonanywhere.com/api/send-email-to-members/', {
-                recipient: selectedRecipient,
+                email: selectedRecipient,
                 subject: subject,
                 message: message,
             });
-
+    
             const data = response.data;
-
+    
             if (data.success) {
                 console.log('Emails sent successfully to members');
             } else {
                 console.error('Failed to send emails:', data.message);
             }
-
+    
             setSelectedRecipient('');
             setSubject('');
             setMessage('');
@@ -54,6 +54,7 @@ const EmailModal = ({ isOpen, onRequestClose }) => {
       onRequestClose={onRequestClose}
       contentLabel="Email Modal"
       style={customStyles}
+      ariaHideApp={false}
     >
       <h2>Send a bulk email to the members</h2>
       <form>
@@ -61,7 +62,7 @@ const EmailModal = ({ isOpen, onRequestClose }) => {
             <label htmlFor="recipient">Recipient:</label>
             <input
                 type="text"
-                id="recipient"
+                id="email"
                 className="form-control form-control-sm"
                 value={selectedRecipient}
                 onChange={(e) => setSelectedRecipient(e.target.value)} // Fix: Use setSelectedRecipient instead of setRecipient

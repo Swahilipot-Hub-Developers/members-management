@@ -17,9 +17,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - with:
+      with: 
         path: backend
-    
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
@@ -34,5 +34,4 @@ jobs:
       
     - name: Run Tests
       run: |
-        cd backend
-        python manage.py test
+        python backend/manage.py test

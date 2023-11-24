@@ -1,13 +1,13 @@
 import csv
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
-from rest_framework import generics
+from rest_framework import status, views, generics
+from rest_framework.decorators import api_view
+from django.contrib.auth import authenticate, login, logout
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.views import View
 from django.core.mail import send_mail
-from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
@@ -96,17 +96,50 @@ class SendEmailToMembersView(View):
 
     def post(self, request, *args, **kwargs):
         try:
-            member_emails = Member.objects.values_list('email_address', flat=True)
-
+            # member_emails = Member.objects.values_list('email_address', flat=True)
+            email = request.POST.get('email_address', '')
             subject = request.POST.get('subject', '')
             message = request.POST.get('message', '')
 
             if not subject or not message:
                 raise ValueError('Subject and message cannot be empty')
-
-            for email in member_emails:
-                send_mail(subject, message, 'ciscoplayroom@gmail.com', [email], fail_silently=False)
+            
+            send_mail(subject, message, 'ciscoplayroom@gmail.com', [email], fail_silently=False)
 
             return JsonResponse({'success': True, 'message': 'Emails sent successfully to members'})
         except Exception as e:
             return JsonResponse({'success': False, 'message': str(e)})
+
+class AdminRegistrationAPIView(generics.CreateAPIView):
+    queryset = AdminProfile.objects.all()
+    serializer_class = AdminProfileSerializer
+
+    def create(self, request, *args, **kwargs):
+        admin_profile_serializer = AdminProfileSerializer(data=request.data)
+        if admin_profile_serializer.is_valid():
+            admin_profile_serializer.save()
+            return Response(admin_profile_serializer.data, status=status.HTTP_201_CREATED)
+        return Response(admin_profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class LoginView(views.APIView):
+    def post(self, request, *args, **kwargs):
+        username = request.data.get('username')
+        password = request.data.get('password')
+        
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            login(request, user)
+            response = JsonResponse({'message': 'Login successful'})
+            response.set_cookie('user_id', str(user.id), httponly=True, secure=True)
+            return response
+        else:
+            return JsonResponse({'message': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+
+@csrf_exempt
+@api_view(['POST'])
+def logout_view(request):
+    logout(request)
+    response = JsonResponse({'message': 'Logout successful'})
+    response.delete_cookie('user_id') 
+    return response
