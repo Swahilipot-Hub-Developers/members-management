@@ -34,5 +34,6 @@ jobs:
       
     - name: Run Tests
       run: |
+        cd backend
         python manage.py test
       working-directory: backend
