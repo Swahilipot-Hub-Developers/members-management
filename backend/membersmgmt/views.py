@@ -96,16 +96,15 @@ class SendEmailToMembersView(View):
 
     def post(self, request, *args, **kwargs):
         try:
-            member_emails = Member.objects.values_list('email_address', flat=True)
-
+            # member_emails = Member.objects.values_list('email_address', flat=True)
+            email = request.POST.get('email_address', '')
             subject = request.POST.get('subject', '')
             message = request.POST.get('message', '')
 
             if not subject or not message:
                 raise ValueError('Subject and message cannot be empty')
-
-            for email in member_emails:
-                send_mail(subject, message, 'ciscoplayroom@gmail.com', [email], fail_silently=False)
+            
+            send_mail(subject, message, 'ciscoplayroom@gmail.com', [email], fail_silently=False)
 
             return JsonResponse({'success': True, 'message': 'Emails sent successfully to members'})
         except Exception as e:
