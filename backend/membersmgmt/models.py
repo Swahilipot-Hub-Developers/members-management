@@ -41,7 +41,7 @@ class Member(models.Model):
 
 # Admin (User) model
 class AdminProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     phone_number = models.CharField(max_length=15)
 
     def __str__(self):
