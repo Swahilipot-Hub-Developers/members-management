@@ -33,7 +33,8 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             console.error('Error during logout:', error);
         }
-      };
+    };
+
     return (
         <AuthContext.Provider value={{ user, login, logout }}>
             {children}
@@ -48,3 +49,5 @@ export const useAuth = () => {
     }
     return context;
 };
+
+export default AuthProvider;
