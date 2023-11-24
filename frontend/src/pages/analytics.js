@@ -7,13 +7,13 @@ const Analytics = () => {
 
     useEffect(() => {
         const fetchTotalMembers = async () => {
-        try {
-            const response = await axios.get('https://codeschris.pythonanywhere.com/api/members/');
-            const data = response.data;
-            setTotalMembers(data.length); 
-        } catch (error) {
-            console.error('Error fetching total members:', error);
-        }
+            try {
+                const response = await axios.get('https://codeschris.pythonanywhere.com/api/members/');
+                const data = response.data;
+                setTotalMembers(data.length); 
+            } catch (error) {
+                console.error('Error fetching total members:', error);
+            }
         };
 
         fetchTotalMembers();
