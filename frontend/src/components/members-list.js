@@ -34,7 +34,7 @@ const MembersList = () => {
     // Delete function for individual member
     const handleDelete = async (memberId) => {
         try {
-            const response = await axios.delete(`https://codeschris.pythonanywhere.com/api/members/${memberId}`);
+            const response = await axios.delete(`https://codeschris.pythonanywhere.com/api/members/${memberId}/`);
 
             if (response.status === 204) {
                 setMembers((prevMembers) => prevMembers.filter((member) => member.id !== memberId));
@@ -51,7 +51,7 @@ const MembersList = () => {
 
     const handleEditSubmit = async (editedData) => {
         try {
-            const response = await axios.put(`https://codeschris.pythonanywhere.com/api/members/${editedData.member_id}`, editedData);
+            const response = await axios.put(`https://codeschris.pythonanywhere.com/api/members/${editedData.member_id}/`, editedData);
     
             if (response.status === 200) {
                 setMembers((prevMembers) =>
