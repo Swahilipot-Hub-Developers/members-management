@@ -2,8 +2,6 @@ import csv
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, views, generics
-from rest_framework.decorators import api_view
-from django.contrib.auth import authenticate, login, logout
 
 from django.http import HttpResponse, JsonResponse
 from django.views import View
@@ -127,18 +125,3 @@ class AdminRegistrationAPIView(generics.CreateAPIView):
             admin_profile_serializer.save()
             return Response(admin_profile_serializer.data, status=status.HTTP_201_CREATED)
         return Response(admin_profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-def login_view(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user:
-            login(request, user)
-            return JsonResponse({'message': 'Login successful'})
-        else:
-            return JsonResponse({'message': 'Invalid credentials'}, status=401)
-
-def logout_view(request):
-    logout(request)
-    return JsonResponse({'message': 'Logout successful'})

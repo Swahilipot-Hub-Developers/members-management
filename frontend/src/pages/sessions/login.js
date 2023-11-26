@@ -1,37 +1,6 @@
 import Image from 'next/image';
-import { useState } from 'react';
-import { login } from '../api/api';
-import { useRouter } from 'next/router';
 
 const LoginPage = () => {
-    const [credentials, setCredentials] = useState({
-        username: '',
-        password: '',
-    });
-    
-    const router = useRouter();
-    
-    const handleLogin = async (e) => {
-        e.preventDefault();
-    
-        try {
-            await login(credentials);
-            router.push('/');
-        } catch (error) {
-          // Handle login error
-          console.error(error);
-        }
-    };
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setCredentials((prevCredentials) => ({
-            ...prevCredentials,
-            [name]: value,
-        }));
-    };
-
-
     return(
         <div className="mt-5 pt-2" style={{minHeight: '73vh'}}>
             <header className="text-center mb-4">
