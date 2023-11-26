@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (credentials) => {
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/login/', credentials, {
+            const response = await axios.post('https://codeschris.pythonanywhere.com/api/login/', credentials, {
                 withCredentials: true,
             });
       
@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await axios.post('http://127.0.0.1:8000/api/logout/', null, {
+            await axios.post('https://codeschris.pythonanywhere.com/api/logout/', null, {
                 withCredentials: true,
             });
     
