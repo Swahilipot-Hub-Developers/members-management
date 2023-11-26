@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'http://127.0.0.1:8000/',
+    baseURL: 'https://codeschris.pythonanywhere.com/',
     withCredentials: true, 
 });
 
 export const login = async (credentials) => {
     try {
-        const response = await axios.post('http://127.0.0.1:8000/api/login/', credentials, {
+        const response = await axios.post('https://codeschris.pythonanywhere.com/api/login/', credentials, {
             withCredentials: true,
         });
         return response.data;
