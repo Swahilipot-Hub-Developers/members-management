@@ -21,7 +21,7 @@ const AdminRegistration = () => {
 
         try {
             const response = await axios.post(
-                'http://127.0.0.1:8000/api/admin-registration/',
+                'https://codeschris.pythonanywhere.com/api/admin-registration/',
                 formData,
                 {
                     headers: {
