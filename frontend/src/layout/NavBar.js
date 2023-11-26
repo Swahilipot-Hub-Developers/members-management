@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import axios from 'axios';
+import Image from 'next/image';
 
 const NavBar = () => {
   const handleExport = async () => {
@@ -22,7 +23,7 @@ const NavBar = () => {
   return (
     <Navbar bg="white" expand="lg" className="mx-4">
       <Navbar.Brand href="/">
-        <img
+        <Image
           src="/assets/logo.png"
           height="30"
           width="150"
