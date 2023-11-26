@@ -138,7 +138,7 @@ class LoginView(views.APIView):
         if user is not None:
             login(request, user)
             response = JsonResponse({'message': 'Login successful'})
-            response.set_cookie('user_id', str(user.id), httponly=True, secure=False, samesite='None')
+            response.set_cookie('user_id', str(user.id), httponly=True, secure=True, samesite='None')
             return response
         else:
             return JsonResponse({'message': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
