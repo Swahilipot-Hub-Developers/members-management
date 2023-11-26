@@ -70,6 +70,15 @@ git clone https://github.com/Swahilipot-Hub-Developers/members-management.git
 
 _**You can use the alternatives (SSH or GH CLI) depending on your preferences**_
 
+After that, you navigate to the project directory and create your own branch where you will be working from and making your own changes:
+
+```bash
+cd members-management
+git checkout -b "your-branch-name"
+```
+
+You can now install the dependencies and begin making changes and contributing!
+
 ### Installing dependencies
 
 _**Frontend Dependencies**_
@@ -110,27 +119,42 @@ With the required dependencies installed, you can now contribute to the project 
 
 ### 1. Log-in and Sign-up
 
-```text
-Add screenshot of the register-admin and login page
-```
+Most of the features of the system are accessed by an Administrator. For this to be a secure and flawless procedure, an admin has to create an account for them to be able to access the various pages and features of the system.
+
+An administrator, preferrably someone working at SPH, can sign up for an account in the system. Their details are saved in a database and they can use this to log-in to the system.
 
 ### 2. Dashboard
 
-```text
-Add screenshot of the dashboard page
-```
+Right after logging in, the first page that loads is the Dashboard. The Dashboard contains various preview features that provide the Admin with an idea of what the system contains/is about.
+
+The Dashboard contains: data summary (total members registered in the system, total members in an individual county, sub-county and country) and a section containing recently registered members.
 
 ### 3. Analytics
 
-```text
-Add screenshot of the analytics page
-```
+The Analytics page consists of Analytics components created to display different data. In general, the components provide a summary of the following:
+
+- Total number of members who have been registered, in the database.
+- Summary (numbers) of members in individual counties, sub-counties or countries.
+- Summary (numbers) of members according to Gender
+
+The summaries and analytics will be displayed in different formats: Charts, numbers and other analytical diagrams/figures.
 
 ### 4. Register as a member
 
-```text
-Add screenshot of the register-member page
-```
+People who want to be members of the Swahilipot Hub Foundation will be able to register through a form within the system. The form is unrestricted and can be accessed by anyone who wants to register. The form takes in the following fields:
+
+- Name
+- Gender
+- Year of birth
+- Email address
+- Phone number
+- Country
+- County
+- Sub-county
+
+These details are essential to ensure that all communication from the foundation can be made easily to the members, either through emails or SMS, and also for ease of registration for any event happening around the foundation that requires registration of this sort.
+
+Once a member registers, they will receive a confirmation email informing them that they have successfully registered their details in the system.
 
 ### 5. Export data
 
@@ -138,14 +162,12 @@ The system features an `Export Data` feature which, the administrator of the sys
 
 The .csv file comes with the latest data recorded in the system before downloading.
 
-```text
-Add screenshot of the Export Data button
-```
-
 ### 6. Communications
 
-```text
-Add screenshot of the communications page
-```
+Swahilipot Hub hosts various events and also, sponsors others. The community is a great part of the foundation and therefore, if any event is to take place at the hub, the members are alerted through the communications page.
+
+The Communications page features two ways for communicating with the members in the system: E-mail and SMS. An admin can select from the two, write a message and send it as bulk to the members. Any message to be sent to the members is sent through either of the two.
 
 ## Conclusion
+
+The SWAHILIPOT MEMBERSHIP MANAGEMENT & ENGAGEMENT platform serves as a powerful tool for organizations to manage their memberships effectively. With a user-friendly registration process, efficient communication channels, and a robust analytical dashboard, the platform enables organizations to engage with their members proactively and maintain an active, vibrant community.
