@@ -128,25 +128,17 @@ class AdminRegistrationAPIView(generics.CreateAPIView):
             return Response(admin_profile_serializer.data, status=status.HTTP_201_CREATED)
         return Response(admin_profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class LoginView(views.APIView):
-    def post(self, request, *args, **kwargs):
-        username = request.data.get('username')
-        password = request.data.get('password')
-        
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
-        
-        if user is not None:
+        if user:
             login(request, user)
-            response = JsonResponse({'message': 'Login successful'})
-            response.set_cookie('user_id', str(user.id), httponly=True, secure=True, samesite='None')
-            return response
+            return JsonResponse({'message': 'Login successful'})
         else:
-            return JsonResponse({'message': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+            return JsonResponse({'message': 'Invalid credentials'}, status=401)
 
-@csrf_exempt
-@api_view(['POST'])
 def logout_view(request):
     logout(request)
-    response = JsonResponse({'message': 'Logout successful'})
-    response.delete_cookie('user_id') 
-    return response
+    return JsonResponse({'message': 'Logout successful'})
