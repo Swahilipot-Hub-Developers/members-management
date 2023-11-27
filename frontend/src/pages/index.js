@@ -1,7 +1,7 @@
 import AnalyticCard from "../components/analyticcard";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-//import withAuth from "./authHook/withAuth";
+import withAdminAuth from "../components/authHook/withAuth";
 
 const Home = () => {
   const [totalMembers, setTotalMembers] = useState(0);
@@ -37,4 +37,4 @@ const Home = () => {
   )
 }
 
-export default Home; //withAuth(Home);
+export default withAdminAuth(Home);

@@ -1,8 +1,11 @@
-import csv
+import csv, json
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, views, generics
 
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.middleware.csrf import get_token
 from django.http import HttpResponse, JsonResponse
 from django.views import View
 from django.core.mail import send_mail
@@ -125,3 +128,19 @@ class AdminRegistrationAPIView(generics.CreateAPIView):
             admin_profile_serializer.save()
             return Response(admin_profile_serializer.data, status=status.HTTP_201_CREATED)
         return Response(admin_profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@csrf_exempt  # Disable CSRF check for simplicity, make sure to handle CSRF securely in production
+def login_view(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        username = data.get('username')
+        password = data.get('password')
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return JsonResponse({'success': True, 'isAdmin': user.is_staff})  # Return data to the frontend
+        else:
+            return JsonResponse({'success': False, 'message': 'Invalid credentials'})
+
+    return JsonResponse({'success': False, 'message': 'Invalid request'})
