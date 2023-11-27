@@ -11,7 +11,7 @@ const EmailModal = ({ isOpen, onRequestClose }) => {
         e.preventDefault();
 
         const formData = new FormData();
-        formData.append('email', selectedRecipient);
+        formData.append('email_address', selectedRecipient);
         formData.append('subject', subject);
         formData.append('message', message);
 
@@ -65,7 +65,7 @@ const EmailModal = ({ isOpen, onRequestClose }) => {
                     <label htmlFor="recipient">Recipient:</label>
                     <input
                         type="text"
-                        id="email"
+                        id="email_address"
                         className="form-control form-control-sm"
                         value={selectedRecipient}
                         onChange={(e) => setSelectedRecipient(e.target.value)}

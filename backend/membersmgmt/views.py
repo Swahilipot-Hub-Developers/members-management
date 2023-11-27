@@ -96,7 +96,7 @@ class SendEmailToMembersView(View):
         try:
             # member_emails = Member.objects.values_list('email_address', flat=True)
             if request.method == 'POST':
-                email = request.POST.get('email')
+                email = request.POST.get('email_address')
                 subject = request.POST.get('subject')
                 message = request.POST.get('message')
 
