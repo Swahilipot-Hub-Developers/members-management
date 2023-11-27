@@ -153,8 +153,8 @@ AUTHENTICATION_BACKENDS = [
 # Email Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587 #465 == SSL, 587 == TLS
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False 
 EMAIL_HOST_USER = 'ciscoplayroom@gmail.com'
-EMAIL_HOST_PASSWORD = 'dxkypnlfsocqidbu'    #Generate App key for use in gmail:: To be changed for security
+EMAIL_HOST_PASSWORD = 'dxkypnlfsocqidbu'
