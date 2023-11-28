@@ -5,14 +5,15 @@ import { useRouter } from 'next/router';
 
 const Layout = ({ children }) => {
   const router = useRouter();
-  const hideNavbar = router.pathname === '/sessions/register-member'; 
+  const hideNavbar = router.pathname === '/sessions/register-member' || router.pathname === '/';
+  const hideFooter = router.pathname === '/sessions/register-member';
 
   return (
     <>
       <MetaTags/>
       {!hideNavbar && <NavBar />}
       <main className='container'>{children}</main>
-      <Footer />
+      {!hideFooter && <Footer />}
     </>
   )
 }

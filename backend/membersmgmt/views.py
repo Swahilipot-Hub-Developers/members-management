@@ -129,7 +129,7 @@ class AdminRegistrationAPIView(generics.CreateAPIView):
             return Response(admin_profile_serializer.data, status=status.HTTP_201_CREATED)
         return Response(admin_profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@csrf_exempt  # Disable CSRF check for simplicity, make sure to handle CSRF securely in production
+@csrf_exempt
 def login_view(request):
     if request.method == 'POST':
         data = json.loads(request.body)
