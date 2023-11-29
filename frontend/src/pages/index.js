@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 
 const Home = () => {
     const [totalMembers, setTotalMembers] = useState(0);
@@ -24,8 +25,8 @@ const Home = () => {
                 <h1 className="text-center text-black fw-bold">Swahilipot Hub Foundation has <span className="text-primary">{totalMembers}</span> members. Join through the linked button below!</h1>
             </div>
             <div className="d-flex flex-column mt-3 gap-3 md-w-25">
-                <a href="/sessions/register-member"><button className="btn btn-primary">Become a member of SPH</button></a>
-                <a href="/sessions/login"><button className="btn btn-primary">Log in as Admin</button></a>
+                <Link href="/sessions/register-member"><button className="btn btn-primary">Become a member of SPH</button></Link>
+                <Link href="/sessions/login"><button className="btn btn-primary">Log in as Admin</button></Link>
             </div>
         </div>
     )
