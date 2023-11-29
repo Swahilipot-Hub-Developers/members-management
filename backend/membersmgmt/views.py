@@ -1,11 +1,12 @@
 import csv, json
+from django.conf import settings
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, views, generics
 
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
-from django.middleware.csrf import get_token
+from twilio.twiml.messaging_response import MessagingResponse
+
+from django.contrib.auth import authenticate, login
 from django.http import HttpResponse, JsonResponse
 from django.views import View
 from django.core.mail import send_mail
@@ -112,7 +113,7 @@ class SendEmailToMembersView(View):
                     'ciscoplayroom@gmail.com', 
                     [email], 
                     fail_silently=False
-                    )
+                )
 
                 return JsonResponse({'success': True, 'message': 'Emails sent successfully to members'})
         except Exception as e:
@@ -144,3 +145,27 @@ def login_view(request):
             return JsonResponse({'success': False, 'message': 'Invalid credentials'})
 
     return JsonResponse({'success': False, 'message': 'Invalid request'})
+
+
+@csrf_exempt
+def send_sms(request):
+    if request.method == 'POST':
+        to_number = request.POST.get('to_number')
+        message_body = request.POST.get('message_body')
+        
+        send_sms_with_twilio(to_number, message_body)
+
+        return JsonResponse({'status': 'success'})
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+
+def send_sms_with_twilio(to_number, message_body):
+    from twilio.rest import Client
+
+    client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+
+    message = client.messages.create(
+        body=message_body,
+        from_=settings.TWILIO_PHONE_NUMBER,
+        to=to_number
+    )

@@ -1,37 +1,27 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import Image from 'next/image';
-//import { login } from '../api/api';
-import { useAuth } from '../../components/authHook/authContext'; // Adjust the path as needed
+import { login } from '../api/api';
 
 const LoginPage = () => {
     const router = useRouter();
-    const { login, isAuthenticated } = useAuth(); // Use the useAuth hook
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
-    // Redirect to home if already authenticated
-    useEffect(() => {
-      if (isAuthenticated) {
-        router.push('/');
-      }
-    }, [isAuthenticated, router]);
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        setError('');
-        setLoading(true);
+    setError('');
+    setLoading(true);
 
-        try {
-            const response = await login({ username, password, csrfmiddlewaretoken: "hkz3ykJ1TJ13ob6hsCofj1Nfg1MLIrVPyuqKdw0hearCMyaAhLDQU7aX6mKXqZhd" });
-            console.log(response);
+    try {
+        const response = await login({ username, password, csrfmiddlewaretoken: "hkz3ykJ1TJ13ob6hsCofj1Nfg1MLIrVPyuqKdw0hearCMyaAhLDQU7aX6mKXqZhd" });
+        console.log(response);
 
             if (response.isAdmin) {
-                router.push('/'); // Redirect to the index page
+                router.push('/dashboard'); // Redirect to the index page
             } else {
                 setError('Invalid credentials');
             }
@@ -44,8 +34,8 @@ const LoginPage = () => {
     };
 
     return (
-        <div className="mt-5 pt-2" style={{ minHeight: '73vh' }}>
-            <header className="text-center mb-4">
+        <div className="mt-5 pt-2" style={{ minHeight: '81.5vh' }}>
+            <header className="text-center mt-5 mb-4">
                 <Image src="/assets/logo.png" height={70} width={300} alt="SPH Logo" />
             </header>
             <form className="container" style={{ width: '70%', margin: 'auto' }} onSubmit={handleSubmit}>

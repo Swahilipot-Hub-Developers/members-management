@@ -22,7 +22,7 @@ const NavBar = () => {
 
   return (
     <Navbar bg="white" expand="lg" className="mx-4">
-      <Navbar.Brand href="/">
+      <Navbar.Brand href="/dashboard">
         <Image
           src="/assets/logo.png"
           height="30"

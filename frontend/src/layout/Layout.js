@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 
 const Layout = ({ children }) => {
   const router = useRouter();
-  const hideNavbar = router.pathname === '/sessions/register-member' || router.pathname === '/';
+  const hideNavbar = router.pathname === '/sessions/register-member' || router.pathname === '/' || router.pathname === '/sessions/login';
   const hideFooter = router.pathname === '/sessions/register-member';
 
   return (
