@@ -171,3 +171,12 @@ The Communications page features two ways for communicating with the members in 
 ## Conclusion
 
 The SWAHILIPOT MEMBERSHIP MANAGEMENT & ENGAGEMENT platform serves as a powerful tool for organizations to manage their memberships effectively. With a user-friendly registration process, efficient communication channels, and a robust analytical dashboard, the platform enables organizations to engage with their members proactively and maintain an active, vibrant community.
+
+## Contributors
+
+This project was created by the amazing team consisting of:
+
+- [Chris Mwalimo🖖🏻👽](https://github.com/codeschris)
+- [Joy Ngugi](https://github.com/Joyngugs)
+- [Daniel Kimanzi](https://github.com/Legacylight)
+- [Abdallah Khalfan](https://github.com/abdallahkhalfan)
