@@ -176,7 +176,7 @@ The SWAHILIPOT MEMBERSHIP MANAGEMENT & ENGAGEMENT platform serves as a powerful 
 
 This project was created by the amazing team consisting of:
 
-- [Chris Mwalimo🖖🏻👽](https://github.com/codeschris)
+- [Chris Mwalimo](https://github.com/codeschris)🖖🏻👽
 - [Joy Ngugi](https://github.com/Joyngugs)
 - [Daniel Kimanzi](https://github.com/Legacylight)
 - [Abdallah Khalfan](https://github.com/abdallahkhalfan)
