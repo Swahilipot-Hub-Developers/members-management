@@ -1,6 +1,7 @@
 from django.urls import path, include
 from .views import MemberListAPIView, MemberDetailAPIView, \
-    ExportCSVView, SendEmailToMembersView, AdminRegistrationAPIView
+    ExportCSVView, SendEmailToMembersView, AdminRegistrationAPIView, login_view, \
+    send_sms, send_sms_with_twilio, csrf_token
 
 urlpatterns = [
     path('members/', MemberListAPIView.as_view(), name='member-list'),
@@ -8,4 +9,8 @@ urlpatterns = [
     path('export-csv/', ExportCSVView.as_view(), name='export_csv'),
     path('send-email-to-members/', SendEmailToMembersView.as_view(), name='send_email_to_members'),
     path('admin-registration/', AdminRegistrationAPIView.as_view(), name='admin-registration'),
+    path('login/', login_view, name='api_login'),
+    path('send_sms/', send_sms, name='send-sms'),
+    path('send_sms_with_twilio', send_sms_with_twilio, name="send-sms-with-twilio"),
+    path('csrf-token/', csrf_token, name='csrf_token'),
 ]

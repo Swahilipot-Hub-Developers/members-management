@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure--fmwckg#6yp*9n_2-%l-!t5g9r(%@1n4r0f*bzd%0a(ucmxnn^" # config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -157,4 +157,9 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False 
 EMAIL_HOST_USER = 'ciscoplayroom@gmail.com'
-EMAIL_HOST_PASSWORD = 'dxkypnlfsocqidbu'
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+#Twilio Configuration
+TWILIO_ACCOUNT_SID = config('TWILIO_ACCOUNT_SID')
+TWILIO_AUTH_TOKEN = config('TWILIO_AUTH_TOKEN')
+TWILIO_PHONE_NUMBER = '+12138109072'

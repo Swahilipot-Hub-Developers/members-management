@@ -22,7 +22,7 @@ const NavBar = () => {
 
   return (
     <Navbar bg="white" expand="lg" className="mx-4">
-      <Navbar.Brand href="/">
+      <Navbar.Brand href="/dashboard">
         <Image
           src="/assets/logo.png"
           height="30"
@@ -33,6 +33,7 @@ const NavBar = () => {
       <Navbar.Toggle aria-controls="navbarNav" />
       <Navbar.Collapse id="navbarNav" className="justify-content-end">
         <Nav className="ml-auto">
+          <Nav.Link href="/dashboard">Dashboard</Nav.Link>
           <Nav.Link href="/analytics">Analytics</Nav.Link>
           <Nav.Link href="/members">Members</Nav.Link>
           <Nav.Link href="/communications">Communications</Nav.Link>

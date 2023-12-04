@@ -2,7 +2,7 @@ import '../styles/scss/theme.scss';
 import '../styles/globals.css';
 import { useEffect } from 'react';
 import Layout from '../layout/Layout';
-import { AuthProvider } from './authHook/authContext';
+//import { AuthProvider } from '../components/authHook/authContext';
 
 export default function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -10,10 +10,10 @@ export default function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <AuthProvider>
+    //<AuthProvider>
     <Layout>
       <Component {...pageProps} />
     </Layout>
-    </AuthProvider>
+    //</AuthProvider>
   );
 }

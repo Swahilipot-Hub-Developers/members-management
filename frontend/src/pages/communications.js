@@ -1,10 +1,12 @@
 import { FaEnvelope, FaPhone } from "react-icons/fa6";
 import { useState, useEffect } from 'react';
 import EmailModal from "../components/sendemailform";
+import SmsModal from "../components/sendsmsform";
 import axios from 'axios';
 
 const Communications = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isSmsModalOpen, setIsSmsModalOpen] = useState(false);
     const [memberEmails, setMemberEmails] = useState([]);
   
     useEffect(() => {
@@ -60,7 +62,7 @@ const Communications = () => {
                         </div>
                     </div>
                 </a>
-                <a href="#SMS">
+                <a href="#sms" onClick={() => setIsSmsModalOpen(true)}>
                     <div className="card p-3 mx-2 mb-3 communication-card">
                         <div className="card-title text-center">
                             <h5><FaPhone className="text-center mb-1"/> SMS</h5>
@@ -76,6 +78,10 @@ const Communications = () => {
                 onRequestClose={() => setIsModalOpen(false)}
                 onSend={handleSendEmail}  // Ensure that this prop is correctly passed
                 memberEmails={memberEmails}
+            />
+            <SmsModal
+                isOpen={isSmsModalOpen}
+                onRequestClose={() => setIsSmsModalOpen(false)}
             />
         </div>
     );

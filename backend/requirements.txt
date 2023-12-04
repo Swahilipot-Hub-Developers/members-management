@@ -3,6 +3,7 @@ djangorestframework===3.14.0
 django-cors-headers===4.3.1
 python-decouple===3.8
 django-secure===1.0.2
+twilio===8.10.2
 # django-recaptcha===4.0.0
 # captcha===0.5.0
 # django-ranged-response===0.2.0 
