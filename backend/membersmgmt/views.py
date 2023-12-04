@@ -3,6 +3,7 @@ from django.conf import settings
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, views, generics
+from django.middleware.csrf import get_token
 
 from twilio.twiml.messaging_response import MessagingResponse
 
@@ -169,3 +170,7 @@ def send_sms_with_twilio(to_number, message_body):
         from_=settings.TWILIO_PHONE_NUMBER,
         to=to_number
     )
+
+def csrf_token(request):
+    csrf_token = get_token(request)
+    return JsonResponse({'csrfToken': csrf_token})

@@ -17,7 +17,7 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
-        const response = await login({ username, password, csrfmiddlewaretoken: "hkz3ykJ1TJ13ob6hsCofj1Nfg1MLIrVPyuqKdw0hearCMyaAhLDQU7aX6mKXqZhd" });
+        const response = await login({ username, password });
         console.log(response);
 
             if (response.isAdmin) {
