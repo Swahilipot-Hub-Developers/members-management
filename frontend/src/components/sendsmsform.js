@@ -14,7 +14,7 @@ const SmsModal = ({ isOpen, onRequestClose }) => {
         formData.append('message_body', messageBody);
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/send_sms/', formData);
+            const response = await axios.post('https://codeschris.pythonanywhere.com/api/send_sms/', formData);
             const data = response.data;
 
             if (data.success) {
