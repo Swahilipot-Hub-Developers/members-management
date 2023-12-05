@@ -43,12 +43,11 @@ class MemberListAPIView(APIView):
         )
 
         subject = 'Thank you for registering as a SPH member'
-        message = f'Hey {member.name},\n\n\
-                    Thank you for registering as a member at Swahilipot Hub! We are excited to have you on board. Through this email,
-                    you will be receiving updates on events happening at Swahilipot Hub and general information from various departments.\n\n\
-                    Regards,\n\
-                    Chris Mwalimo.
-                    '
+        message = f'Hey {member.name},\n\n' \
+          f'Thank you for registering as a member at Swahilipot Hub! We are excited to have you on board. Through this email, ' \
+          f'you will be receiving updates on events happening at Swahilipot Hub and general information from various departments.\n\n' \
+          f'Regards,\n' \
+          f'Chris Mwalimo.'
         from_email = 'ciscoplayroom@gmail.com'
         recipient_list = [member.email_address]
 
