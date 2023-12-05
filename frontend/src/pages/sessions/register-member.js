@@ -36,7 +36,7 @@ const MemberRegistration = () => {
         
       
         // Include the reCAPTCHA value in your form data
-        //const formDataWithRecaptcha = { ...formData, recaptchaValue };
+        const formDataWithRecaptcha = { ...formData, recaptchaValue };
 
         try {
             const response = await axios.post('https://codeschris.pythonanywhere.com/api/members/', formData, {
