@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
-//import ReCAPTCHA from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const MemberRegistration = () => {
     const [formData, setFormData] = useState({
@@ -15,11 +15,11 @@ const MemberRegistration = () => {
         phone_number: '',
     });
 
-    /*const [recaptchaValue, setRecaptchaValue] = useState(null);
+    const [recaptchaValue, setRecaptchaValue] = useState(null);
 
     const handleRecaptchaChange = (value) => {
         setRecaptchaValue(value);
-    }*/
+    }
 
     const handleInputChange = (e) => {
         const { id, value } = e.target;
@@ -127,11 +127,11 @@ const MemberRegistration = () => {
                     <label htmlFor="phone_number" className="form-label">Phone Number*</label>
                     <input type="text" className="form-control" id="phone_number" aria-describedby="emailHelp" value={formData.phone_number} onChange={handleInputChange} required/>
                 </div>
-                {/*<ReCAPTCHA
-                    sitekey={process.env.SITE_KEY}
+                <ReCAPTCHA
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                     onChange={handleRecaptchaChange}
                     className="mb-3"
-                />*/}
+                />
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>
