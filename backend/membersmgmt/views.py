@@ -44,7 +44,7 @@ class MemberListAPIView(APIView):
 
         subject = 'Thank you for registering as a SPH member'
         message = f'Thank you for registering, {member.name}! We are excited to have you on board.'
-        from_email = 'ciscoplayroom.gmail.com'  # Update with your email address
+        from_email = 'ciscoplayroom@gmail.com'
         recipient_list = [member.email_address]
 
         send_mail(subject, message, from_email, recipient_list, fail_silently=False)
