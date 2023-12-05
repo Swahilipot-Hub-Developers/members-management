@@ -39,7 +39,7 @@ const MemberRegistration = () => {
         const formDataWithRecaptcha = { ...formData, recaptchaValue };
 
         try {
-            const response = await axios.post('https://codeschris.pythonanywhere.com/api/members/', formData, {
+            const response = await axios.post('https://codeschris.pythonanywhere.com/api/members/', formDataWithRecaptcha, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
