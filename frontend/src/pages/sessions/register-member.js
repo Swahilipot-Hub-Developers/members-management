@@ -33,18 +33,23 @@ const MemberRegistration = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-      
+    
+        // Check if reCAPTCHA value is present
+        if (!recaptchaValue) {
+            console.error('reCAPTCHA not completed');
+            return;
+        }
+    
         // Include the reCAPTCHA value in your form data
         const formDataWithRecaptcha = { ...formData, recaptchaValue };
-
+    
         try {
             const response = await axios.post('https://codeschris.pythonanywhere.com/api/members/', formDataWithRecaptcha, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
             });
-
+    
             if (response.status === 201) {
                 console.log('Member registered successfully');
                 window.location.reload();   // replace with message page. this reloads the screen after form submission
