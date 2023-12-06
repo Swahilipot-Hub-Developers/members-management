@@ -1,5 +1,7 @@
 # Swahilipot Members Management and Engagement System
 
+Link to Presentation Slides: https://docs.google.com/presentation/d/1Ol09jlWtKg5JMrCIAKSWqc3m8IlESev2zgpDr7IRhVw/edit#slide=id.g2a283abcffa_0_0
+
 ## Table of contents
 
 1. [Introduction](#introduction)
